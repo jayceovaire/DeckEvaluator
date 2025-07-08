@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
-const {data: tasks, error, status } = await useFetch('/api/tasks');
+import {useCards} from "~/composables/useCards";
+
+const {cards, getCards} = useCards()
+
 
 
 </script>
@@ -9,6 +12,13 @@ const {data: tasks, error, status } = await useFetch('/api/tasks');
 <div>
   This is the Index page
 </div>
+  <UButton
+    @click="getCards">
+    Get Card Names
+  </UButton>
+  <ul>
+    <li v-for="card in cards" :key="card.id">{{ card.name }}</li>
+  </ul>
 </template>
 
 <style scoped>
