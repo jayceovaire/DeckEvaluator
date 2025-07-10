@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 import NightmodeSwitch from "~/components/app/NightmodeSwitch.vue";
+import ClerkSignIn from "~/components/app/ClerkSignIn.vue";
 
 const items = ref<NavigationMenuItem[]>([
   {
@@ -40,11 +41,6 @@ const items = ref<NavigationMenuItem[]>([
     target: '_blank'
   },
   {
-    label: 'login',
-    icon: 'ic:baseline-log-in',
-    to: '/login',
-  },
-  {
     label: 'Settings',
     icon: 'ic:baseline-settings',
     slot: 'settings' as const,
@@ -58,13 +54,28 @@ const items = ref<NavigationMenuItem[]>([
 </script>
 
 <template>
-  <UNavigationMenu color="neutral" arrow content-orientation="vertical" :items="items" class="w-full justify-center">
-    <!-- Slot for the 'Settings' item -->
-    <template #settings-content="{ item }">
-      <div class="p-4 space-y-2">
-        <p class="text-sm font-medium text-muted">Theme</p>
-        <NightmodeSwitch color="neutral"/>
-      </div>
-    </template>
-  </UNavigationMenu>
+  <nav class="relative flex items-center justify-center px-6 py-3  ">
+    <!-- Center: Navigation Menu -->
+    <UNavigationMenu
+        color="neutral"
+        arrow
+        content-orientation="vertical"
+        :items="items"
+        class="absolute left-1/2 -translate-x-1/2"
+    >
+      <!-- Slot for the 'Settings' item -->
+      <template #settings-content="{ item }">
+        <div class="p-4 space-y-2">
+          <p class="text-sm font-medium text-muted">Theme</p>
+          <NightmodeSwitch color="neutral" />
+        </div>
+      </template>
+    </UNavigationMenu>
+    <!-- Right: Clerk Login -->
+    <div class="ml-auto">
+      <ClerkSignIn />
+    </div>
+  </nav>
 </template>
+
+
