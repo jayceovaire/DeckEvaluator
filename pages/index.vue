@@ -1,11 +1,8 @@
 <script setup lang="ts">
 
 import {useCards} from "~/composables/useCards";
-import ClerkSignIn from "~/components/app/ClerkSignIn.vue";
 
 const {cards, getCards} = useCards()
-
-
 
 </script>
 

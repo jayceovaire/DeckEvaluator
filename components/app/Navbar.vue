@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui'
 import NightmodeSwitch from "~/components/app/NightmodeSwitch.vue";
-import ClerkSignIn from "~/components/app/ClerkSignIn.vue";
+
 
 const items = ref<NavigationMenuItem[]>([
   {
@@ -71,10 +71,6 @@ const items = ref<NavigationMenuItem[]>([
         </div>
       </template>
     </UNavigationMenu>
-    <!-- Right: Clerk Login -->
-    <div class="ml-auto">
-      <ClerkSignIn />
-    </div>
   </nav>
 </template>
 
