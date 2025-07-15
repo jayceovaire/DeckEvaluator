@@ -45,6 +45,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     <UFormField label="Password" name="password">
       <UInput v-model="state.password" type="password" />
     </UFormField>
+    <p class="text-sm mt-2">Don't have an account? <ULink to="/signup">Sign up</ULink></p>
 
     <UButton type="submit">Submit
     </UButton>

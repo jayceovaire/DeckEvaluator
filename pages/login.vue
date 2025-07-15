@@ -11,6 +11,7 @@ import LoginForm from "~/components/app/LoginForm.vue";
     <LoginForm class="login-form justify-self-centered mb-3"/>
 
   </UContainer>
+
 </template>
 
 <style scoped>
