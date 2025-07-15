@@ -12,8 +12,8 @@ const nightmodeValue = computed({
 
 <template>
   <USwitch
-      unchecked-icon="ic:baseline-wb-sunny"
       v-model="nightmodeValue"
+      unchecked-icon="ic:baseline-wb-sunny"
       checked-icon="ic:round-mode-night"
 
   />

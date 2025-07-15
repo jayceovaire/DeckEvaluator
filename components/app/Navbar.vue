@@ -40,6 +40,9 @@ const items = ref<NavigationMenuItem[]>([
     to: 'https://github.com',
     target: '_blank'
   },
+  {label: 'Login',
+  icon: 'ic:round-login',
+  to: '/login',},
   {
     label: 'Settings',
     icon: 'ic:baseline-settings',

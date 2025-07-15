@@ -36,4 +36,3 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UButton>
   </UForm>
 </template>
-
