@@ -26,6 +26,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       description: 'Welcome!',
       color: 'primary'
     })
+    navigateTo('/');
+
   } catch (error) {
     toast.add({
       title: 'Login failed',

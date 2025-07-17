@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import * as v from 'valibot'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import {signUp} from "~/composables/auth";
 
 const schema = v.object({
   email: v.pipe(v.string(), v.email('Invalid email')),
@@ -16,9 +17,25 @@ const state = reactive({
 
 const toast = useToast()
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
-  console.log(event.data)
+  try {
+    await signUp(state.email, state.password);
+    toast.add({
+      title: 'Success',
+      description: 'Check your email to confirm your account.',
+      color: 'primary',
+    });
+    navigateTo('/login')
+
+  } catch (error: any) {
+    toast.add({
+      title: 'Error',
+      description: error.message || 'Something went wrong.',
+      color: 'error',
+    });
+  }
 }
+
+
 </script>
 
 <template>

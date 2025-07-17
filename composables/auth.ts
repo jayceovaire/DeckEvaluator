@@ -40,6 +40,40 @@ export const onLogoutClick = async () => {
     }
 }
 
+export const signUp = async (email: string, password: string) => {
+    const supabase = useSupabase();
+
+    const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+    });
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    const identity = data?.user?.identities?.[0];
+
+    if (identity) {
+        const identityCreatedAt = new Date(identity.created_at).getTime();
+        const now = Date.now();
+        const diffInSeconds = (now - identityCreatedAt) / 1000;
+
+        // If the identity was created more than ~10 seconds ago, it's probably a duplicate attempt
+        if (diffInSeconds > 10) {
+            throw new Error(
+                'This email is already registered. Please check your inbox to confirm it.'
+            );
+        }
+    }
+
+    return data;
+};
+
+
+
+
+
 
 
 
