@@ -4,7 +4,7 @@ import SignupForm from "~/components/app/SignupForm.vue";
 
 <template>
   <div>
-    This is the Sign in page!
+    This is the Sign up page!
   </div>
 
   <UContainer class="flex items-center justify-center w-full mt-50">

@@ -23,8 +23,7 @@ const items = ref<NavigationMenuItem[]>([
         label: 'Power Calculator',
         description: 'Learn how to install and configure Nuxt UI in your application.',
         icon: 'i-lucide-cloud-download',
-        target: '_blank',
-        to: 'https://youtube.com',
+        to: '/powerCalculator',
       },
       {
         label: 'Roast',
