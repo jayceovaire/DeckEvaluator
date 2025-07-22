@@ -53,11 +53,17 @@ export const signUp = async (email: string, password: string) => {
     }
 
     const identity = data?.user?.identities?.[0];
-
+    const identities = data?.user?.identities
+    if (!identities || identities.length === 0){
+        await navigateTo('/login')
+        throw new Error('This email is already registered. Please log in instead.')
+    }
     if (identity) {
         const identityCreatedAt = new Date(identity.created_at).getTime();
         const now = Date.now();
         const diffInSeconds = (now - identityCreatedAt) / 1000;
+
+
 
         // If the identity was created more than ~10 seconds ago, it's probably a duplicate attempt
         if (diffInSeconds > 10) {
@@ -65,7 +71,11 @@ export const signUp = async (email: string, password: string) => {
                 'This email is already registered. Please check your inbox to confirm it.'
             );
         }
+
+
     }
+    console.log('Identities:', data?.user?.identities)
+    console.log('SignUp data:', data)
 
     return data;
 };
